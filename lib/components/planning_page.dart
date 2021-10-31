@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'authentification.dart';
 
 class PlanningPage extends StatefulWidget {
   const PlanningPage({Key? key}) : super(key: key);
@@ -9,12 +10,18 @@ class PlanningPage extends StatefulWidget {
 
 class _PlanningPageState extends State<PlanningPage> {
   List userList = [];
+  String username = '';
+  bool isSpectator = false;
 
   @override
   void initState() {
     super.initState();
     userList.add(const MarkInput());
-    userList.add(ElevatedButton(onPressed: () {}, child: const Text('Кнопка')));
+    userList.add(ElevatedButton(
+        onPressed: () {
+          _buttonPressed;
+        },
+        child: const Text('Кнопка')));
     userList.add(const UserCard(myText: 'Пользователь 1'));
     userList.add(const UserCard(myText: 'Пользователь 2'));
     userList.add(const UserCard(myText: 'Пользователь 3'));
@@ -35,6 +42,8 @@ class _PlanningPageState extends State<PlanningPage> {
           }),
     );
   }
+
+  void _buttonPressed() {}
 }
 
 class UserCard extends StatelessWidget {
@@ -67,15 +76,15 @@ class _MarkInputState extends State<MarkInput> {
   Widget build(BuildContext context) {
     return TextField(
       keyboardType:
-          TextInputType.numberWithOptions(signed: false, decimal: true),
+          const TextInputType.numberWithOptions(signed: false, decimal: true),
       decoration: InputDecoration(
-        border: OutlineInputBorder(),
+        border: const OutlineInputBorder(),
         labelText: 'Оценка',
         suffixIcon: GestureDetector(
           onTap: () {},
-          child: Icon(Icons.list),
+          child: const Icon(Icons.list),
         ),
-        prefix: Text('Оценка'),
+        prefix: const Text('Оценка'),
       ),
     );
   }
