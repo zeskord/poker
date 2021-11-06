@@ -70,13 +70,11 @@ class MarkCard extends StatelessWidget {
     return SizedBox(
         height: 50,
         width: double.infinity,
-        child: Container(
-            // alignment: Alignment.center,
-            child: Card(
-                child: ListTile(
-                    title: Text(
+        child: Card(
+            child: ListTile(
+                title: Text(
           content,
           textAlign: TextAlign.center,
-        )))));
+        ))));
   }
 }
