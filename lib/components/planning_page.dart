@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'authentification.dart';
+import 'package:poker/mark_input.dart';
 
 class PlanningPage extends StatefulWidget {
   const PlanningPage({Key? key}) : super(key: key);
@@ -9,29 +10,32 @@ class PlanningPage extends StatefulWidget {
 }
 
 class _PlanningPageState extends State<PlanningPage> {
-  List userList = [];
+  List<Widget> userList = [];
   String username = '';
   bool isSpectator = false;
+  UserData userData = UserData();
 
   @override
   void initState() {
     super.initState();
+
     userList.add(const MarkInput());
     userList.add(ElevatedButton(
         onPressed: () {
-          _buttonPressed;
+          Navigator.of(context).restorablePush(_dialogBuilder);
         },
         child: const Text('Кнопка')));
     userList.add(const UserCard(myText: 'Пользователь 1'));
     userList.add(const UserCard(myText: 'Пользователь 2'));
     userList.add(const UserCard(myText: 'Пользователь 3'));
+    userList.add(Text(userData.username));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Планирование'),
+        title: Text(username),
         actions: const [],
       ),
       body: ListView.builder(
@@ -43,7 +47,22 @@ class _PlanningPageState extends State<PlanningPage> {
     );
   }
 
-  void _buttonPressed() {}
+  void _buttonPressed() {
+    setState(() {
+      username = 'ddsdfsdfwefe';
+    });
+  }
+
+  static Route<Object?> _dialogBuilder(
+      BuildContext context, Object? arguments) {
+    return DialogRoute<void>(
+      context: context,
+      builder: (BuildContext context) =>
+          const SimpleDialog(title: Text('Material Alert!'), children: <Widget>[
+        Text('Текст'),
+      ]),
+    );
+  }
 }
 
 class UserCard extends StatelessWidget {
@@ -54,38 +73,5 @@ class UserCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
         height: 50, child: Card(child: ListTile(title: Text(myText))));
-  }
-}
-
-class MarkInput extends StatefulWidget {
-  const MarkInput({Key? key}) : super(key: key);
-
-  @override
-  _MarkInputState createState() => _MarkInputState();
-}
-
-class _MarkInputState extends State<MarkInput> {
-  String value = '';
-  @override
-  void initState() {
-    super.initState();
-    value = '';
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      keyboardType:
-          const TextInputType.numberWithOptions(signed: false, decimal: true),
-      decoration: InputDecoration(
-        border: const OutlineInputBorder(),
-        labelText: 'Оценка',
-        suffixIcon: GestureDetector(
-          onTap: () {},
-          child: const Icon(Icons.list),
-        ),
-        prefix: const Text('Оценка'),
-      ),
-    );
   }
 }
