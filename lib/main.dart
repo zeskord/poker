@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:poker/components/planning_page.dart';
+import 'package:poker/planning_page.dart';
 
 void main() => runApp(const MyApp());
 
