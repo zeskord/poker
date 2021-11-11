@@ -19,6 +19,8 @@ class _PlanningPageState extends State<PlanningPage> {
   void initState() {
     super.initState();
 
+    // <Object>[] users = [];
+
     userList.add(const MarkInput());
     userList.add(ElevatedButton(
         onPressed: () {
@@ -28,6 +30,14 @@ class _PlanningPageState extends State<PlanningPage> {
     userList.add(const UserCard(myText: 'Пользователь 1'));
     userList.add(const UserCard(myText: 'Пользователь 2'));
     userList.add(const UserCard(myText: 'Пользователь 3'));
+    userList.add(const UserCard(myText: 'Пользователь 4'));
+    userList.add(const UserCard(myText: 'Пользователь 5'));
+    userList.add(const UserCard(myText: 'Пользователь 6'));
+    userList.add(const UserCard(myText: 'Пользователь 7'));
+    userList.add(const UserCard(myText: 'Пользователь 8'));
+    userList.add(const UserCard(myText: 'Пользователь 9'));
+    userList.add(const UserCard(myText: 'Пользователь 10'));
+    userList.add(const UserCard(myText: 'Пользователь 11'));
     userList.add(Text(userData.username));
   }
 

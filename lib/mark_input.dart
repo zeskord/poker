@@ -41,7 +41,6 @@ class _MarkInputState extends State<MarkInput> {
         labelText: 'Оценка',
         suffixIcon: GestureDetector(
           onTap: () {
-            // Navigator.of(context).restorablePush(_dialogBuilder);
             showMySimpleDialog(context);
           },
           child: const Icon(Icons.list),
@@ -52,23 +51,10 @@ class _MarkInputState extends State<MarkInput> {
   }
 
   void onMarkSelect(String content) {
-    // _ee = content;
-    // value = '';
-    // ModalRoute.of
     setState(() {
       _controller.text = content;
     });
   }
-
-  // Route<Object?> _dialogBuilder(BuildContext context, Object? arguments) {
-  //   DialogRoute myDialog = DialogRoute<void>(
-  //     context: context,
-  //     builder: (BuildContext context) => SimpleDialog(
-  //         title: const Text('Выберите оценку'), children: markList),
-  //   );
-
-  //   return myDialog;
-  // }
 
   void showMySimpleDialog(BuildContext context) {
     List<Widget> markList = <Widget>[
@@ -82,6 +68,8 @@ class _MarkInputState extends State<MarkInput> {
       MarkCard(content: '13', notifyParent: onMarkSelect),
       MarkCard(content: '21', notifyParent: onMarkSelect),
       MarkCard(content: '34', notifyParent: onMarkSelect),
+      MarkCard(content: '55', notifyParent: onMarkSelect),
+      MarkCard(content: '89', notifyParent: onMarkSelect),
     ];
 
     showDialog(
@@ -90,26 +78,6 @@ class _MarkInputState extends State<MarkInput> {
           return SimpleDialog(
             title: const Text("SimpleDialog"),
             children: markList,
-            // <Widget>[
-            //   new SimpleDialogOption(
-            //     child: new Text("SimpleDialogOption One"),
-            //     onPressed: () {
-            //       Navigator.of(context).pop("SimpleDialogOption One");
-            //     },
-            //   ),
-            //   new SimpleDialogOption(
-            //     child: new Text("SimpleDialogOption Two"),
-            //     onPressed: () {
-            //       Navigator.of(context).pop("SimpleDialogOption Two");
-            //     },
-            //   ),
-            //   new SimpleDialogOption(
-            //     child: new Text("SimpleDialogOption Three"),
-            //     onPressed: () {
-            //       Navigator.of(context).pop("SimpleDialogOption Three");
-            //     },
-            //   ),
-            // ],
           );
         });
   }
@@ -138,7 +106,6 @@ class MarkCard extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           onTap: () {
-            // notifyParent(content);
             _onClick(content);
             Navigator.of(context).pop(content);
           },
